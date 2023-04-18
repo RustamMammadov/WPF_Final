@@ -1,0 +1,81 @@
+﻿<Page x:Class="Job.az_yeni_.Views.WorkerMainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Job.az_yeni_.Views"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="WorkerMainPage" Background="White" FontSize="25">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White"/>
+                <GradientStop Color="CornflowerBlue" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>MinSalary : </Label>
+                        <TextBox Text="{Binding MinSalary}" Width="108"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>MaxSalary :</Label>
+                        <TextBox Text="{Binding MaxSalary}" Width="108"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Major :</Label>
+                        <TextBox Text="{Binding Search}" Width="160"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+                <Button Grid.Column="1" Command="{Binding SearchCommand}">Search</Button>
+                <Button Margin="10" Grid.Column="2" Command="{Binding ShowNotificationsCommand}" HorizontalAlignment="Right" Width="150" Content="{Binding NotificationCount}"></Button>
+            </Grid>
+            
+            <ListBox FontSize="24" Background="LightBlue" Name="VacancyList" SelectedItem="{Binding Vacancy,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" ItemsSource="{Binding TempVacancies}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <GroupBox Width="350" Header="Vacancy" >
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label>Major :</Label>
+                                    <TextBlock Text="{Binding Name}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label>Salary :</Label>
+                                    <TextBlock Text="{Binding Salary}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label>Description :</Label>
+                                    <TextBlock Text="{Binding Description}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    
+                                    <Button IsEnabled="{Binding Path=IsSelected, 
+                                    RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" Command="{Binding DataContext.ApplyCommand, ElementName=VacancyList}" Content="Apply" Width="100"  materialDesign:TextFieldAssist.HasClearButton="True"></Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Grid>
+</Page>

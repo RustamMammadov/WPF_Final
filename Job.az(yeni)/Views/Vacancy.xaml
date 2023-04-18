@@ -1,0 +1,73 @@
+﻿<Window x:Class="Job.az_yeni_.Views.Vacancy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Job.az_yeni_.Views"
+        mc:Ignorable="d"
+        Title="Vacancy" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White"/>
+                <GradientStop Color="CornflowerBlue" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <ListBox ItemsSource="{Binding Workers}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <GroupBox Background="LightBlue" Width="256" Header="Vacancy" >
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Name : </Label>
+                                <TextBlock  Text="{Binding Name}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Surname : </Label>
+                                <TextBlock Text="{Binding Surname}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>City : </Label>
+                                <TextBlock Text="{Binding City}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Phone : </Label>
+                                <TextBlock Text="{Binding Phone}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>BirthDate :</Label>
+                                <TextBlock Text="{Binding BirthDate}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Languages :</Label>
+                                <ComboBox ItemsSource="{Binding Cv.Languages}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Companies :</Label>
+                                <ComboBox ItemsSource="{Binding Cv.Companies}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Skills :</Label>
+                                <ComboBox ItemsSource="{Binding Cv.Skills}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>GitLink :</Label>
+                                <TextBlock Text="{Binding Cv.GitLink}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Linkedin :</Label>
+                                <TextBlock Text="{Binding Cv.Linkedin}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

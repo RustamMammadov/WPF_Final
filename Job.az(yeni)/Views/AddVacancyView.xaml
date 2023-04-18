@@ -1,0 +1,29 @@
+﻿<Window x:Class="Job.az_yeni_.Views.AddVacancyView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign ="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Job.az_yeni_.Views"
+        mc:Ignorable="d"
+        Title="AddVacancyView" Height="310" Width="512" FontSize="24" BorderThickness="5" BorderBrush="LightBlue">
+    <Grid Background="LightBlue">
+        <GroupBox Width="Auto" Header="Vacancy" >
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Major:</Label>
+                    <TextBox Text="{Binding Vacancy.Name}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Salary :</Label>
+                    <TextBox Text="{Binding Vacancy.Salary}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Description :</Label>
+                    <TextBox Text="{Binding Vacancy.Description}" Width="auto"  materialDesign:TextFieldAssist.HasClearButton="True"></TextBox>
+                </StackPanel>
+                <Button FontSize="24" Height="40" Margin="0,30,0,0" Command="{Binding SaveVacancyCommand}">Save</Button>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>
